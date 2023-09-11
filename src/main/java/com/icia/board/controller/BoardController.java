@@ -38,4 +38,7 @@ public class BoardController {
         model.addAttribute("boardList", boardDTOList);
         return "/board/boardFindAll";
     }
+
+//    @GetMapping("/board/findByTitle")
+//    public String
 }

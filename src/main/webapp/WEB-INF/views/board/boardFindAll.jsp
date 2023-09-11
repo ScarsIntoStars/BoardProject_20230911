@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -11,27 +10,27 @@
 
 </head>
 <body>
-<%--<%@include file="component/header.jsp"%>--%>
-<%--<%@include file="component/nav.jsp"%>--%>
+<%@include file="../component/header.jsp"%>
+<%@include file="../component/nav.jsp"%>
 <div class="container">
     <div class="row">
         <div class="col pt-5">
             <table class="table">
                 <thead>
-                    <tr>
-                        <th scope="col">글 번호</th>
-                        <th scope="col">제목</th>
-                        <th scope="col">작성자</th>
-                        <th scope="col">조회수</th>
-                    </tr>
+                <tr>
+                    <th scope="col" class="text-center">글 번호</th>
+                    <th scope="col" class="text-center">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col" class="text-center">조회수</th>
+                </tr>
                 </thead>
                 <tbody class="table-group-divider">
                 <c:forEach items="${boardList}" var="boardDTO">
                     <tr>
-                        <td>${boardDTO.id}</td>
-                        <td>${boardDTO.boardTitle}</td>
+                        <td class="text-center">${boardDTO.id}</td>
+                        <td href="/board/findByTitle">${boardDTO.boardTitle}</td>
                         <td>${boardDTO.boardWriter}</td>
-                        <td>${boardDTO.boardHits}</td>
+                        <td class="text-center">${boardDTO.boardHits}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
