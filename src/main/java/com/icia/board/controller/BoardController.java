@@ -53,6 +53,11 @@ public class BoardController {
     public String findByTitle(@RequestParam("id") Long id, Model model){
         BoardDTO result = boardService.findByTitle(id);
         model.addAttribute("board", result);
+        // 파일이 있으면 파일을 가져옴
+        if (boardDTO.getFileAttached() == 1) {
+            boardFileDTO boardFileDTO = boardService.findFile(id);
+            model.addAttribute("boardFile", boardFileDTO);
+        }
         return "/board/boardDetail";
     }
 

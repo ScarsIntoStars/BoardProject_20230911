@@ -24,6 +24,15 @@
                 <h4 id="scrollspyHeading1">${board.boardTitle}"</h4>
                 <p>"${board.boardContents}"</p>
             </div>
+            <c:if test="${board.fileAttached == 1}">
+                <tr>
+                    <th>image</th>
+                    <td>
+                        <img src="${pageContext.request.contextPath}/upload/${boardFile.storedFileName}"
+                             alt="" width="100" heigth="100">
+                    </td>
+                </tr>
+            </c:if>
             <input class="btn btn-secondary" id="back" onclick="backing()" value="뒤로가기">
             <input class="btn btn-danger" onclick="board_update()" value="수정하기">
             <input class="btn btn-warning" value="삭제하기">
