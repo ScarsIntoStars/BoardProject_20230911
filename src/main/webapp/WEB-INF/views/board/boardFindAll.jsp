@@ -28,13 +28,18 @@
                 <c:forEach items="${boardList}" var="boardDTO">
                     <tr>
                         <td class="text-center">${boardDTO.id}</td>
-                        <td href="/board/findByTitle">${boardDTO.boardTitle}</td>
+                        <td><a href="/board/findByTitle?id=${boardDTO.id}" methods="get">${boardDTO.boardTitle}</a></td>
                         <td>${boardDTO.boardWriter}</td>
                         <td class="text-center">${boardDTO.boardHits}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col">
+
         </div>
     </div>
 </div>

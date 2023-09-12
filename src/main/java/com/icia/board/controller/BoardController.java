@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -24,10 +25,10 @@ public class BoardController {
     public String boardSave(BoardDTO boardDTO){
         boolean result = boardService.save(boardDTO);
         if(result) {
-            System.out.println("학생등록 성공");
+            System.out.println("게시글 등록 성공");
             return "index";
         } else {
-            System.out.println("학생등록 실패");
+            System.out.println("게시글 등록 실패");
             return "/board/boardSave";
         }
     }
@@ -41,4 +42,43 @@ public class BoardController {
 
 //    @GetMapping("/board/findByTitle")
 //    public String
+
+//    @GetMapping
+//    public String findById(@RequestParam("id") Long id, Model model) {
+//        // 데이터처리
+//        // 데이터 가져오기
+//        boardService.updateHits(id);
+////        BoardDTO boardDTO = boardService.findById(id);
+////        model.addAttribute("board" boardDTO);
+//        return "boardPages/boardDetail";
+//    }
+
+    @GetMapping("/board/findByTitle")
+    public String findByTitle(@RequestParam("id") Long id, Model model){
+        BoardDTO result = boardService.findByTitle(id);
+        model.addAttribute("board", result);
+        return "/board/boardDetail";
+    }
+
+    @GetMapping("/board/update")
+    public String updateForm(@RequestParam("id") Long id, Model model) {
+        BoardDTO boardDTO = boardService.findByTitle(id);
+        model.addAttribute("board", boardDTO);
+        return "/board/boardUpdate";
+    }
+
+    @PostMapping("/board/update")
+    public String update(@RequestParam BoardDTO boardDTO, Model model) {
+        boardService.update(boardDTO);
+        BoardDTO dto = boardService.findByTitle(boardDTO.getId());
+        model.addAttribute("board", dto);
+        return "/board/boardDetail";
+//        return "redirct:/board?id=" + boardDTO.getId();
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") Long id) {
+        boardService.delete(id);
+        return "redirect:/board/";
+    }
 }
