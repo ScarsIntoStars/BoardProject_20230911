@@ -17,8 +17,8 @@
             <h3 class="pt-5">게시글 수정</h3>
             <form name="updateForm" class="pt-3" action="/board/update" method="post">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="boardWriter" placeholder="nick_name" name="boardWriter">
-                    <label for="boardWriter">${board.boardWriter}</label>
+                    <input readonly type="text" class="form-control" id="boardWriter" placeholder="nick_name" name="boardWriter">
+                    <label for="boardWriter">작성자</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="boardPass" placeholder="password" name="boardPass">
@@ -26,11 +26,11 @@
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="boardTitle" placeholder="boardTitle" name="boardTitle">
-                    <label for="boardTitle">${board.boardTitle}</label>
+                    <label for="boardTitle">제목</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="boardContents" placeholder="boardContents" name="boardContents" style="height:150px">
-                    <label for="boardContents">${board.boardContents}</label>
+                    <label for="boardContents">내용</label>
                 </div>
                 <input type="submit" value="수정완료" onclick="board_update()">
                 <input type="reset" value="수정취소">

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -22,16 +23,11 @@ public class BoardController {
     }
 
     @PostMapping("/board/save")
-    public String boardSave(BoardDTO boardDTO){
-        boolean result = boardService.save(boardDTO);
-        if(result) {
-            System.out.println("게시글 등록 성공");
-            return "index";
-        } else {
-            System.out.println("게시글 등록 실패");
+    public String boardSave(BoardDTO boardDTO) throws IOException {
+        boardService.save(boardDTO);
             return "/board/boardSave";
         }
-    }
+
 
     @GetMapping("/board/findAll")
     public String findAll(Model model){

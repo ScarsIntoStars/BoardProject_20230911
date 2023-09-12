@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col">
             <h3 class="pt-5">게시글 작성</h3>
-            <form name="frm" class="pt-3" action="/board/save" method="post">
+            <form name="frm" class="pt-3" action="/board/save" method="post" enctype="multipart/form-data">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="boardWriter" placeholder="nick_name" name="boardWriter">
                     <label for="boardWriter">작성자</label>
@@ -32,6 +32,7 @@
                     <input type="text" class="form-control" id="boardContents" placeholder="boardContents" name="boardContents" style="height:150px">
                     <label for="boardContents">내용</label>
                 </div>
+                <input type="file" name="boardFile"> <br>
                 <input type="submit" value="작성완료">
                 <input type="reset" value="작성취소">
             </form>
