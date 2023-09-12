@@ -1,6 +1,7 @@
 package com.icia.board.controller;
 
 import com.icia.board.dto.BoardDTO;
+import com.icia.board.dto.BoardFileDTO;
 import com.icia.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,19 +19,19 @@ public class BoardController {
     public BoardService boardService;
 
     @GetMapping("/board/save")
-    public String boardSave(){
+    public String boardSave() {
         return "board/boardSave";
     }
 
     @PostMapping("/board/save")
     public String boardSave(BoardDTO boardDTO) throws IOException {
         boardService.save(boardDTO);
-            return "/board/boardSave";
-        }
+        return "/board/boardSave";
+    }
 
 
     @GetMapping("/board/findAll")
-    public String findAll(Model model){
+    public String findAll(Model model) {
         List<BoardDTO> boardDTOList = boardService.findAll();
         model.addAttribute("boardList", boardDTOList);
         return "/board/boardFindAll";
@@ -50,7 +51,7 @@ public class BoardController {
 //    }
 
     @GetMapping("/board/findByTitle")
-    public String findByTitle(@RequestParam("id") Long id, Model model){
+    public String findByTitle(@RequestParam("id") Long id, Model model) {
         BoardDTO result = boardService.findByTitle(id);
         model.addAttribute("board", result);
         // 파일이 있으면 파일을 가져옴
